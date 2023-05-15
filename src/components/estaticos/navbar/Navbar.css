@@ -1,8 +1,42 @@
-.Navbar {
-    
-box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.75);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.MenuBtn:hover {
-    color: azure;
+.Navbar {  
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.75);
 }
+
+.NavbarLink {
+    border-left: 1px solid #690169;
+    border-right: 1px solid #690169;
+}
+
+.NavbarLink- {
+    border-left: 1px solid #690169;
+    border-right: 2px solid #690169;
+}
+
+.-NavbarLink {
+    border-left: 2px solid #690169;
+    border-right: 1px solid #690169;
+}
+
+.NavbarLink:hover {
+    transition: 1s;
+    background-color: #5c005c !important;
+    box-shadow: inset 0px 0px 5px 5px rgb(112, 0, 112);
+}
+
+.NavbarLink:not(:hover) {
+    transition: 1s;
+    
+}
+
+.Navbar-Logo {
+    
+}
+
+
+
