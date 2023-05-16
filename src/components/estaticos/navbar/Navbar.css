@@ -9,19 +9,10 @@
 }
 
 .NavbarLink {
-    border-left: 1px solid #690169;
-    border-right: 1px solid #690169;
+    box-shadow: inset 0px 0px 5px 5px rgb(112, 0, 112);
+    border-radius: 5px;
 }
 
-.NavbarLink- {
-    border-left: 1px solid #690169;
-    border-right: 2px solid #690169;
-}
-
-.-NavbarLink {
-    border-left: 2px solid #690169;
-    border-right: 1px solid #690169;
-}
 
 .NavbarLink:hover {
     transition: 1s;
@@ -34,9 +25,7 @@
     
 }
 
-.Navbar-Logo {
-    
-}
+
 
 
 
