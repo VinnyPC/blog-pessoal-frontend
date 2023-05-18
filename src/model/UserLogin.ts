@@ -10,3 +10,5 @@ export interface UserLogin {
     foto: string;
     token?: string | null;
 }
+
+export default UserLogin

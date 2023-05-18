@@ -19,5 +19,10 @@ export const api = axios.create({
 //assincrono porque precisa aguardar o retorno da API para depois acionar a função setDados
 export const login = async (url: any, dados: any, setDados: any) => {
     const resposta = await api.post(url, dados)
-    setDados(resposta)
+    setDados(resposta.data)
+}
+
+export const cadastroUsuario = async (url: any, dados: any, setDados: any) => {
+    const resposta = await api.post(url, dados)
+    setDados(resposta.data.token)
 }

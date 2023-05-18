@@ -4,7 +4,7 @@ import React, { ChangeEvent, useState, useEffect } from 'react'
 import './Login.css'
 import { Grid, Box, Typography, TextField, Button, Stack } from '@mui/material'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { api } from '../../../service/Service'
+import { login } from '../../../service/Service'
 import { UserLogin } from '../../../model/UserLogin'
 import useLocalStorage from 'react-use-localstorage'
 
@@ -47,8 +47,7 @@ function Login() {
 
         //tenta logar, mas se nao consegui aparece usuario ou senha invalido
         try{
-            const resposta = await api.post(`/usuarios/logar`, userLogin)
-            setToken(resposta.data.token)
+            await login(`/usuarios/logar`, userLogin, setToken)
             alert('Usuário logado com sucesso!')
         }catch(error){
             alert('Dados inválidos')
