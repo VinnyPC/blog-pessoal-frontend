@@ -36,9 +36,10 @@ function CadastroUsuario() {
         //verifica o id do userResult, se for diferente de 0 não está mais padrao, quer dizer que ja tem algum valor cadastrado
     useEffect(() => {
         if (userResult.id != 0) {
-            navigate("/login")
+            navigate("/login");
+            console.log("qualquer coisa")
         }
-    }, [userResult])
+    }, [userResult]);
 
 
     //captura o valor do campo confirmar senha
@@ -59,9 +60,10 @@ function CadastroUsuario() {
         e.preventDefault()
 
         //confirmar senha
-        if(confirmarSenha == user.senha){ 
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
+        if(confirmarSenha == user.senha){
+          cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult);
+          alert("Usuario cadastrado com sucesso");
+          //navigate("/login");provisório, deveria estar no useEffect
         }else{
             alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
         }

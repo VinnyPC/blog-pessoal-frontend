@@ -6,8 +6,7 @@ import axios from "axios";
 // "api" irá receber o axios, e todas as funções que ele possui
 export const api = axios.create({
     //baseURL armazena o endereço da API
-    //baseURL: 'https://blogpessoal-lz76.onrender.com'
-    baseURL: 'http://localhost:8080' //teste local
+    baseURL: 'https://blogpessoal-lz76.onrender.com'
 });
 
 
@@ -19,10 +18,10 @@ export const api = axios.create({
 //assincrono porque precisa aguardar o retorno da API para depois acionar a função setDados
 export const login = async (url: any, dados: any, setDados: any) => {
     const resposta = await api.post(url, dados)
-    setDados(resposta.data)
+    setDados(resposta.data.token)
 }
 
 export const cadastroUsuario = async (url: any, dados: any, setDados: any) => {
     const resposta = await api.post(url, dados)
-    setDados(resposta.data.token)
+    setDados(resposta.data)
 }

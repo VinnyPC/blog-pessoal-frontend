@@ -2,6 +2,7 @@ import React from 'react';
 import {Typography, Grid, Button} from '@material-ui/core';
 import './Home.css';
 import { Box } from '@mui/material';
+import TabPostagem from '../../../components/postagens/tabpostagem/TabPostagem';
 
 
 function Home() {
@@ -23,6 +24,7 @@ function Home() {
                 <img src="https://inventta.net/wp-content/uploads/2021/02/capa-1-henrique-1024x516.png" alt="" width="100%" height="100%" />
             </Grid>
             <Grid xs={12} style={{ backgroundColor: "white" }}>
+                <TabPostagem />
             </Grid>
         </Grid>
     </>
