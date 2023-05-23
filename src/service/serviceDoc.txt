@@ -1,0 +1,36 @@
+O arquivo service é responsável por fazer a conexão de fato com a API (backend)
+
+########## Axios
+O Axios é um biblioteca que permite uma integração do seu projeto React para 
+qualquer serviço de API disponível.
+
+O Axios intercepta todas as requisições
+
+Primeiro se inicializa o Axios colocando dentro de um objeto que será exportado depois
+no caso de Service.ts, é armazenado dentro de uma variavel chamada "api". Ela irá 
+irá receber o axios, e todas as funções que ele possui
+
+Depois se usa "baseURL" para armazenar o endereço da API
+
+################comunicação com a API
+Após isso é feito os métodos que irão fazer a comunicação com a API, solicitando e enviando
+informações
+
+Os metodos são construidos basicamente da mesma maneira então:
+
+- export: indica que a função deve ser exportada como um módulo para que 
+possa ser utilizada em outros arquivos do projeto.
+- async:  indica que a função é assíncrona e pode utilizar o operador 
+await para esperar por respostas.
+- url: baseURL + /endereço dentro da api
+- dados: JSON com os dados que serao passados para API
+- setDado: vai receber a resposta da API (dados com um token)
+- await api.post(url, dados): A função está aguardando a resposta da requisição 
+HTTP POST para a URL especificada, enviando os dados fornecidos.
+- resposta: é onde o resultado da requisição é armazenado.
+
+O valor do token retornado na resposta é extraído usando resposta.data.token.
+Esse valor do token é atribuído à variável ou estado setDados por meio da função 
+setDados. Isso implica que o valor do token será atualizado no local em que setDados
+foi definido.
+

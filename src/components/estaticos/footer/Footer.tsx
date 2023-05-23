@@ -20,7 +20,7 @@ function Footer() {
           <Box>
             <Typography
               variant="subtitle1"
-              align="center"
+              
               gutterBottom
               style={{ color: "white" }}
             >

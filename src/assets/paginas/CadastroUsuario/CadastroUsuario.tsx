@@ -58,7 +58,7 @@ function CadastroUsuario() {
     if (confirmarSenha == user.senha) {
       cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult);
       alert("Usuario cadastrado com sucesso");
-      //navigate("/login");provisório, deveria estar no useEffect
+      
     } else {
       alert(
         "Dados inconsistentes. Favor verificar as informações de cadastro."
