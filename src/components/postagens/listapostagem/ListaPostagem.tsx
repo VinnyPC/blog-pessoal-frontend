@@ -25,8 +25,8 @@ function ListaPostagem() {
     }
   }, [token]);
 
-  function getPost() {
-    busca("/temas", setPosts, {
+  async function getPost() {
+    await busca("/postagens", setPosts, {
       headers: {
         Authorization: token,
       },

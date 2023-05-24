@@ -25,11 +25,12 @@ function ListaTema() {
     }
   }, [token]);
 
-  function getTemas() {
+  async function getTemas() {
+    // alterado a função pra dentro de um try catch, para poder verificar a validade do token do usuário
     busca("/temas", setTemas, {
       headers: {
-        Authorization: token
-      }
+        Authorization: token,
+      },
     });
   }
 
