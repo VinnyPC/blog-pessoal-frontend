@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 import TabPostagem from "../../../components/postagens/tabpostagem/TabPostagem";
 import { Brightness1 } from "@mui/icons-material";
 import ModalPostagem from "../../../components/postagens/modalPostagem/ModalPostagem";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
@@ -37,7 +37,7 @@ function Home() {
         style={{
           backgroundImage:
             "url(https://i.ytimg.com/vi/XgOov36UzjQ/maxresdefault.jpg)",
-          backgroundSize: "100vw"
+          backgroundSize: "100vw",
         }}
       >
         <Grid item xs={8}>
@@ -78,19 +78,21 @@ function Home() {
           </Box>
           <Box display="flex" justifyContent="center" gap={1} marginBottom={2}>
             <Box>
-              <ModalPostagem  />
+              <ModalPostagem />
             </Box>
-            <Button
-              variant="contained"
-              style={{
-                borderColor: "white",
-                backgroundColor: "#810081",
-                color: "white",
-              }}
-              className="Home-Button"
-            >
-              Ver Postagens
-            </Button>
+            <Link to="/postagens">
+              <Button
+                variant="contained"
+                style={{
+                  borderColor: "white",
+                  backgroundColor: "#810081",
+                  color: "white",
+                }}
+                className="Home-Button"
+              >
+                Ver Postagens
+              </Button>
+            </Link>
           </Box>
         </Box>
 

@@ -6,10 +6,19 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Typography, Grid } from "@material-ui/core";
 import "./Footer.css";
 import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function Footer() {
-  return (
-    <>
+
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  var footerComponent;
+
+  if(token != ""){
+    footerComponent = (
       <Grid alignItems="center" item xs={12}>
         <Box
           display={"flex"}
@@ -20,7 +29,6 @@ function Footer() {
           <Box>
             <Typography
               variant="subtitle1"
-              
               gutterBottom
               style={{ color: "white" }}
             >
@@ -35,7 +43,12 @@ function Footer() {
               Vinicius da Silva dos Santos
             </Typography>
           </Box>
-          <Box display="flex" gap={4} alignItems="center" justifyContent="center">
+          <Box
+            display="flex"
+            gap={4}
+            alignItems="center"
+            justifyContent="center"
+          >
             <a href="https://wa.me/5511990244686" target="_blank">
               <WhatsAppIcon style={{ fontSize: 60, color: "white" }} />
             </a>
@@ -76,6 +89,11 @@ function Footer() {
           </Box>
         </Box>
       </Grid>
+    );
+  }
+  return (
+    <>
+      {footerComponent}
     </>
   );
 }

@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { Box, Stack } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import { useDispatch } from "react-redux";
@@ -33,8 +33,10 @@ function Navbar() {
     console.log('abacaxi')
     history('/login')
   };
-  return (
-    <>
+
+  var navbarComponent
+  if (token != ""){
+    navbarComponent = (
       <AppBar
         position="static"
         className="Appbar"
@@ -84,16 +86,25 @@ function Navbar() {
                 </Button>
               </Box>
             </Link>
-            
-              <Box px={2} style={{ cursor: "pointer" }} className="NavbarLink" onClick={goLogout}>
-                <Button variant="text" style={{ color: "white" }}>
-                  Logout
-                </Button>
-              </Box>
-            
+
+            <Box
+              px={2}
+              style={{ cursor: "pointer" }}
+              className="NavbarLink"
+              onClick={goLogout}
+            >
+              <Button variant="text" style={{ color: "white" }}>
+                Logout
+              </Button>
+            </Box>
           </Stack>
         </Toolbar>
       </AppBar>
+    );
+  }
+  return (
+    <>
+      {navbarComponent}
     </>
   );
 }
