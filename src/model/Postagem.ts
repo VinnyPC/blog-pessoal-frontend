@@ -4,5 +4,5 @@ export interface Postagem {
     id: number;
     titulo: string;
     texto: string;
-    tema: Tema;
+    tema?: Tema | null
 }

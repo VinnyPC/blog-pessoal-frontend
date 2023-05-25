@@ -14,8 +14,7 @@ import useLocalStorage from "react-use-localstorage";
 import { Postagem } from "../../../model/Postagem";
 
 function DeletarPostagem() {
-
-  let navigate = useNavigate();
+  let navigate = useNavigate(); // usado para fazer os redirects de página
   const { id } = useParams<{ id: string }>();
   const [token, setToken] = useLocalStorage("Token");
   const [post, setPosts] = useState<Postagem>();
@@ -54,7 +53,7 @@ function DeletarPostagem() {
   function nao() {
     navigate("/postagens");
   }
-  
+
   return (
     <>
       <Box m={2}>
@@ -81,7 +80,12 @@ function DeletarPostagem() {
                 </Button>
               </Box>
               <Box>
-                <Button onClick={nao} variant="contained" size="large" color="secondary">
+                <Button
+                  onClick={nao}
+                  variant="contained"
+                  size="large"
+                  color="secondary"
+                >
                   Não
                 </Button>
               </Box>
