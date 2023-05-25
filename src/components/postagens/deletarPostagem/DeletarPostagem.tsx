@@ -10,13 +10,18 @@ import { Box } from "@mui/material";
 import "./DeletarPostagem.css";
 import { buscaId, deleteId } from "../../../service/Service";
 import { useNavigate, useParams } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import { Postagem } from "../../../model/Postagem";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function DeletarPostagem() {
   let navigate = useNavigate(); // usado para fazer os redirects de página
   const { id } = useParams<{ id: string }>();
-  const [token, setToken] = useLocalStorage("Token");
+  //const [token, setToken] = useLocalStorage("Token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const [post, setPosts] = useState<Postagem>();
 
   useEffect(() => {

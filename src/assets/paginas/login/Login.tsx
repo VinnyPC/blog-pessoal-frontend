@@ -5,9 +5,11 @@ import { Grid, Box, Typography, TextField, Button, Stack } from "@mui/material";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { login } from "../../../service/Service";
 import { UserLogin } from "../../../model/UserLogin";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../../store/tokens/actions";
 
 function Login() {
 
@@ -18,8 +20,10 @@ function Login() {
 	//cria a variavel pra navegação interna pela rota
 	let history = useNavigate(); //navega de uma tela para outra, navegar através da lógica/
 
+  const dispatch = useDispatch();
+  const [token, setToken] = useState("");
 	//cria um estado para armazenamento no localStorage do navegador
-	const [token, setToken] = useLocalStorage("Token");
+	//const [token, setToken] = useLocalStorage("Token");
 
 	const [userLogin, setUserLogin] = useState<UserLogin>( //Cria um estado de controle para o usuario preencher os dados de login
 		//history('/posts')
@@ -60,6 +64,7 @@ function Login() {
   //algo diferente de vazio navega para /home
 	useEffect(() => {
 		if (token != "") {
+      dispatch(addToken(token))
 			history("/home");
 		}
 	}, [token]);

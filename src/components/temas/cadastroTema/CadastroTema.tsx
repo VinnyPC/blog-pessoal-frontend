@@ -3,16 +3,20 @@ import { Container, Typography, TextField, Button } from "@material-ui/core";
 import "./CadastroTema.css"
 import { buscaId, post, put } from "../../../service/Service";
 import { useNavigate, useParams } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import { Tema } from "../../../model/Tema";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function CadastroTema() {
   let navigate = useNavigate();
 
   //capturar os parametros que sao enviados por uma URL
   const{ id } = useParams<{id: string}>();
-  const [token, setToken] = useLocalStorage('Token');
-
+  //const [token, setToken] = useLocalStorage('Token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const[tema, setTema] = useState<Tema>({
     id: 0,
     descricao: ''
@@ -32,7 +36,7 @@ function CadastroTema() {
   }, [id])
 
   async function findById(id: string){
-    buscaId(`/tema/${id}`, setTema, {
+    buscaId(`/temas/${id}`, setTema, {
       headers: {
         Authorization: token
       }
@@ -59,7 +63,7 @@ function CadastroTema() {
      //Se tiver algum id (diferente de undefined), significa que a postagem existe, entao é uma atualização
      if (id !== undefined) {
        console.log(tema);
-       put(`/tema`, tema, setTema, { //usa o put para atualizar um tema, passando como parametro a URL da API, os dados
+       put(`/temas`, tema, setTema, { //usa o put para atualizar um tema, passando como parametro a URL da API, os dados
                                       //que serao atualizados, capturar o objeto atualizado que a API retornar
          headers: { //passando o token
            Authorization: token,
@@ -70,7 +74,7 @@ function CadastroTema() {
        //não tem um id
      } else {
       //vai criar um tema seguindo os mesmos parametros da put
-       post(`/tema`, tema, setTema, {
+       post(`/temas`, tema, setTema, {
          headers: {
            Authorization: token,
          },

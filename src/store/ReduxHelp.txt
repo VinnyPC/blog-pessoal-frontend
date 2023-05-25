@@ -1,0 +1,41 @@
+Redux - biblioteca javascript
+yarn add @types/redux@3.6.0 react-redux@7.2.5
+
+redux.js.org
+
+
+Redux centraliza todos os controles de estado da aplicacação em um unico lugar
+e dai esses estados serao compartilhados em todos os componentes que usarao ele
+
+Agora nao precisa mais do localStorage para armazenar o token, com isso nao ficará mais exposto 
+
+##############################
+Principais conceitos:
+
+Store: é um objeto que contém o estado da aplicação. Ele é único e imutável, 
+o que significa que o estado não pode ser modificado diretamente. 
+Para atualizar o estado, você precisa despachar uma ação.
+
+Actions: são objetos que representam uma intenção de mudança de estado. 
+Elas são despachadas para a store usando a função dispatch. 
+As ações possuem um tipo e opcionalmente um payload que contém os dados 
+necessários para atualizar o estado.
+
+Reducers: são funções puras que recebem o estado atual e uma ação despachada, 
+e retornam um novo estado. Os reducers são responsáveis por definir como o estado 
+muda em resposta a uma ação específica. Eles garantem que o estado da aplicação seja 
+atualizado de forma previsível.
+
+
+################
+Vantagens do Redux:
+
+Facilita o compartilhamento de estado entre componentes.
+Ajuda a rastrear e depurar as mudanças de estado.
+Torna o gerenciamento do estado mais previsível em aplicativos complexos.
+
+
+Primeiro é configurado o action
+
+
+

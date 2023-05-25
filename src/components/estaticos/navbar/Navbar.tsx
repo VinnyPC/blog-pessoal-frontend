@@ -10,16 +10,25 @@ import {
 import { Box, Stack } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { useDispatch } from "react-redux";
+import { Action, addToken } from "../../../store/tokens/actions";
 function Navbar() {
   //capturar o token que ta armazenado no navegador
-  const [token, setToken] = useLocalStorage('Token');
+  //const [token, setToken] = useLocalStorage('Token');
+
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   //history que irá receber o useNavigate
   let history = useNavigate();
+  const dispatch = useDispatch();
 
   //efetivar o logout zerando o token
   function goLogout(){
-    setToken('')
+      dispatch(addToken(""));
     alert("Usuário deslogado")
     console.log('abacaxi')
     history('/login')
@@ -90,3 +99,7 @@ function Navbar() {
 }
 
 export default Navbar;
+function dispatch(arg0: Action) {
+  throw new Error("Function not implemented.");
+}
+

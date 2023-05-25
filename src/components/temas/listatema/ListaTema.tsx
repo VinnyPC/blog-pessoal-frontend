@@ -10,12 +10,17 @@ import {
 import { Box } from "@mui/material";
 import "./ListaTema.css";
 import { Tema } from "../../../model/Tema";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import { busca } from "../../../service/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function ListaTema() {
   const [temas, setTemas] = useState<Tema[]>([]);
-  const [token, setToken] = useLocalStorage("Token");
+  //const [token, setToken] = useLocalStorage("Token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   let history = useNavigate();
 
   useEffect(() => {

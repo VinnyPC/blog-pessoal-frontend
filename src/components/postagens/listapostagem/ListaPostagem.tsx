@@ -9,14 +9,19 @@ import {
 } from "@material-ui/core";
 import { Box } from "@mui/material";
 import "./ListaPostagem.css";
-import useLocalStorage from "react-use-localstorage";
+//import useLocalStorage from "react-use-localstorage";
 import { Postagem } from "../../../model/Postagem";
 import { busca } from "../../../service/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([]);
-  const [token, setToken] = useLocalStorage("Token");
+  //const [token, setToken] = useLocalStorage("Token");
   let history = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token == "") {

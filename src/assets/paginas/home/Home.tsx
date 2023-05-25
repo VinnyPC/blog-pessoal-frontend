@@ -7,11 +7,17 @@ import { Brightness1 } from "@mui/icons-material";
 import ModalPostagem from "../../../components/postagens/modalPostagem/ModalPostagem";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function Home() {
 
    let navigate = useNavigate();
-   const [token, setToken] = useLocalStorage("Token");
+   //const [token, setToken] = useLocalStorage("Token");
+
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
    useEffect(() => {
      if (token == "") {

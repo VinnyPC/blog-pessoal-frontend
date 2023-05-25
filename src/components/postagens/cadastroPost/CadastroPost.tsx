@@ -16,14 +16,18 @@ import useLocalStorage from "react-use-localstorage";
 import { busca, buscaId, post, put } from "../../../service/Service";
 import { Tema } from "../../../model/Tema";
 import { Postagem } from "../../../model/Postagem";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function CadastroPost() {
 
   let navigate = useNavigate();// usado para fazer os redirects de página
   const { id } = useParams<{ id: string }>();//captura o id que está na rota URL (para atualizar um elemento, precisa do id dele.)
-  const [token, setToken] = useLocalStorage("Token");//token armazenado no localStorage
+    //const [token, setToken] = useLocalStorage("Token");//token armazenado no localStorage
   const [temas, setTemas] = useState<Tema[]>([]);//armazena dentro de um array os temas que JA estao cadastrados dentro da API
-
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   //verificação do token
   useEffect(() => {
     if (token == "") {
@@ -61,7 +65,7 @@ function CadastroPost() {
 
   //busca todos os temas da API e retorna para o state temas
   async function getTemas() {
-    await busca("/tema", setTemas, {
+    await busca("/temas", setTemas, {
       headers: {
         Authorization: token,
       },
@@ -112,7 +116,7 @@ function CadastroPost() {
   }
   //redireciona para tela de posts
   function back() {
-    navigate("/posts");
+    navigate("/postagens");
   }
 
   return (
@@ -153,7 +157,7 @@ function CadastroPost() {
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             onChange={(e) =>
-              buscaId(`/tema/${e.target.value}`, setTema, {
+              buscaId(`/temas/${e.target.value}`, setTema, {
                 headers: {
                   Authorization: token,
                 },
