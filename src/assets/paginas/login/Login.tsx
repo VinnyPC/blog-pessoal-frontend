@@ -10,6 +10,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useDispatch } from "react-redux";
 import { addToken } from "../../../store/tokens/actions";
+import { toast } from "react-toastify";
 
 function Login() {
 
@@ -54,9 +55,27 @@ function Login() {
 		//tenta logar, mas se nao consegui aparece usuario ou senha invalido
 		try {
 			await login(`/usuarios/logar`, userLogin, setToken);
-			alert("Usuário logado com sucesso!");
+			toast.success("Usuario logado com sucesso", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
 		} catch (error) {
-			alert("Dados inválidos");
+			toast.error("Dados inválidos", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
 		}
 	}
 

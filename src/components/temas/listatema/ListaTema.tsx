@@ -14,6 +14,8 @@ import { Tema } from "../../../model/Tema";
 import { busca } from "../../../service/Service";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
+import { Action, addToken } from "../../../store/tokens/actions";
+import { toast } from "react-toastify";
 
 function ListaTema() {
   const [temas, setTemas] = useState<Tema[]>([]);
@@ -25,18 +27,45 @@ function ListaTema() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado");
+      toast.error("Você precisa estar logado", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
       history("/login");
     }
   }, [token]);
 
   async function getTemas() {
     // alterado a função pra dentro de um try catch, para poder verificar a validade do token do usuário
-    busca("/temas", setTemas, {
+    try{
+      await busca("/temas", setTemas, {
       headers: {
         Authorization: token,
       },
-    });
+    })
+    }catch (error: any) {
+      if(error.toString().includes('403')) {
+        toast.error("Seu token expirou logue novamente.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+        });
+        dispatch(addToken(''))
+        history('/login')
+    }
+    }
+  
   }
 
   useEffect(() => {
@@ -93,3 +122,7 @@ function ListaTema() {
 }
 
 export default ListaTema;
+function dispatch(arg0: Action) {
+  throw new Error("Function not implemented.");
+}
+

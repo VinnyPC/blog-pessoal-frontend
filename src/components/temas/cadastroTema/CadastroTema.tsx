@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Tema } from "../../../model/Tema";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
 
 function CadastroTema() {
   let navigate = useNavigate();
@@ -24,7 +25,16 @@ function CadastroTema() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado");
+      toast.error("Você precisa estar logado", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
       navigate("/login");
     }
   }, [token]);
@@ -69,7 +79,16 @@ function CadastroTema() {
            Authorization: token,
          },
        });
-       alert("Tema atualizado com sucesso");
+       toast.success("Tema atualizado com sucesso", {
+         position: "top-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: false,
+         draggable: false,
+         theme: "colored",
+         progress: undefined,
+       });
 
        //não tem um id
      } else {
@@ -79,7 +98,16 @@ function CadastroTema() {
            Authorization: token,
          },
        });
-       alert("Tema cadastrado com sucesso");
+       toast.success("Tema cadastrado com sucesso", {
+         position: "top-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: false,
+         draggable: false,
+         theme: "colored",
+         progress: undefined,
+       });
      }
      back(); //redirecionar para /temas
    }
