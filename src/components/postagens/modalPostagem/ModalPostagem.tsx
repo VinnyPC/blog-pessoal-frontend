@@ -2,8 +2,8 @@ import { makeStyles, Theme, createStyles, Button } from "@material-ui/core";
 import React from "react";
 import CadastroPost from "../cadastroPost/CadastroPost";
 import CloseIcon from "@material-ui/icons/Close";
-import { Box } from "@mui/material";
-import Modal from "@material-ui/core/Modal";
+import { Box, Modal } from "@mui/material";
+
 
 //Esta função retorna um objeto com as coordenadas de posição para centralizar o modal na tela.
 function getModalStyle() {
